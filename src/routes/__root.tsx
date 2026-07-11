@@ -67,6 +67,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Comandă online pizza, gustări și băuturi. Livrare rapidă în Iași." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Pizza Express — livrare pizza în Iași" },
+      { name: "twitter:description", content: "Comandă online pizza, gustări și băuturi. Livrare rapidă în Iași." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3c0ad38-7ed0-4b6d-b7f4-a6f41dcf5367/id-preview-42002767--a754ad51-6134-4c48-a236-48d047dc4d61.lovable.app-1783799457566.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a3c0ad38-7ed0-4b6d-b7f4-a6f41dcf5367/id-preview-42002767--a754ad51-6134-4c48-a236-48d047dc4d61.lovable.app-1783799457566.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
