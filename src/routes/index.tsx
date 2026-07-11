@@ -5,6 +5,7 @@ import { HeroCarousel } from "@/components/HeroCarousel";
 import { CategoryNav } from "@/components/CategoryNav";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductModal } from "@/components/ProductModal";
+import { BundleModal } from "@/components/BundleModal";
 import { AppPromo } from "@/components/AppPromo";
 import { Footer } from "@/components/Footer";
 import { categories, products, type Product } from "@/lib/data";
@@ -46,7 +47,11 @@ function Home() {
       </main>
 
       <Footer />
-      <ProductModal product={selected} onClose={() => setSelected(null)} />
+      {selected?.isBundle ? (
+        <BundleModal product={selected} onClose={() => setSelected(null)} />
+      ) : (
+        <ProductModal product={selected} onClose={() => setSelected(null)} />
+      )}
     </div>
   );
 }
