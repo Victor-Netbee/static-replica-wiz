@@ -287,19 +287,68 @@ export const products: Product[] = [
 
 export const productById = (id: string) => products.find((p) => p.id === id)!;
 
+export type StorySlide = {
+  id: string;
+  image: string;
+  eyebrow?: string;
+  title: string;
+  priceLabel?: string;
+  bullets?: string[];
+  bg: string;
+  cta: string;
+};
+
 export type Promo = {
   id: string;
   title: string;
   color: "orange" | "green" | "lime" | "yellow";
   image: string;
   badge?: string;
+  stories: StorySlide[];
 };
 
 export const promos: Promo[] = [
-  { id: "p1", title: "Dodo weekend", color: "orange", image: heroPepperoni },
-  { id: "p2", title: "70% reducere la a doua pizza", color: "orange", image: heroDiscount },
-  { id: "p3", title: "Are gustul verii", color: "green", image: heroSummer },
-  { id: "p4", title: "Fan combo", color: "green", image: heroCombo },
-  { id: "p5", title: "Încercați noile noastre produse", color: "lime", image: heroPepperoni, badge: "nou" },
-  { id: "p6", title: "50% reducere", color: "orange", image: heroCombo },
+  {
+    id: "p1", title: "Weekend delicios", color: "orange", image: heroPepperoni,
+    stories: [
+      { id: "p1s1", image: heroPepperoni, eyebrow: "Weekend", title: "Pizza preferată la preț special", priceLabel: "de la 24,99 lei", bg: "#7a1a1a", cta: "Comandă acum" },
+      { id: "p1s2", image: heroDiscount, eyebrow: "Doar sâmbătă & duminică", title: "A doua pizza -50%", bg: "#8a2a1a", cta: "Vezi meniul" },
+    ],
+  },
+  {
+    id: "p2", title: "70% reducere la a doua pizza", color: "orange", image: heroDiscount,
+    stories: [
+      { id: "p2s1", image: heroDiscount, eyebrow: "Ofertă", title: "70% reducere la a doua pizza", priceLabel: "aplicat automat", bg: "#c2410c", cta: "Alege pizza" },
+      { id: "p2s2", image: heroPepperoni, title: "Se aplică la cea mai ieftină pizza", bullets: ["✦ orice mărime", "✦ orice blat", "✦ fără cupon"], bg: "#9a3412", cta: "Comandă acum" },
+      { id: "p2s3", image: heroCombo, title: "Adaugă și o gustare", priceLabel: "de la 12,99 lei", bg: "#7c2d12", cta: "Vezi gustările" },
+    ],
+  },
+  {
+    id: "p3", title: "Are gustul verii", color: "green", image: heroSummer,
+    stories: [
+      { id: "p3s1", image: heroSummer, eyebrow: "Sezon", title: "Are gustul verii", bg: "#166534", cta: "Descoperă" },
+      { id: "p3s2", image: heroSummer, title: "Legume proaspete de sezon", bullets: ["✦ roșii cherry", "✦ busuioc", "✦ mozzarella"], bg: "#14532d", cta: "Comandă acum" },
+    ],
+  },
+  {
+    id: "p4", title: "Fan combo", color: "green", image: heroCombo,
+    stories: [
+      { id: "p4s1", image: heroCombo, eyebrow: "Combo", title: "Fan combo", priceLabel: "doar la 113,99 lei", bg: "#065f46", cta: "Comandă acum" },
+      { id: "p4s2", image: heroCombo, title: "2 pizza mari + băuturi cadou", bullets: ["✦ 4 beri incluse", "✦ blat la alegere"], bg: "#064e3b", cta: "Vezi combo" },
+    ],
+  },
+  {
+    id: "p5", title: "Gustări noi", color: "lime", image: heroPepperoni, badge: "nou",
+    stories: [
+      { id: "p5s1", image: fries, eyebrow: "Gustări noi", title: "Cartofi gratinați", priceLabel: "doar la 28,99 lei",
+        bullets: ["✦ cu pui", "✦ cu șuncă", "✦ cu bacon", "✦ cu cârnați"], bg: "#3f0a0a", cta: "Comandă acum" },
+      { id: "p5s2", image: nuggets, eyebrow: "Nou în meniu", title: "Nuggets crocanți", priceLabel: "9 buc. + sos", bg: "#4a0e0e", cta: "Adaugă în coș" },
+    ],
+  },
+  {
+    id: "p6", title: "50% reducere", color: "orange", image: heroCombo,
+    stories: [
+      { id: "p6s1", image: heroCombo, eyebrow: "Ofertă", title: "50% reducere", priceLabel: "la combo-uri selectate", bg: "#9a3412", cta: "Vezi ofertele" },
+    ],
+  },
 ];
