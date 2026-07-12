@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { promos } from "@/lib/data";
+import { StoriesModal } from "./StoriesModal";
 
 const bgFor = (c: string) =>
   c === "orange" ? "bg-promo-orange"
@@ -13,6 +14,7 @@ const textFor = (c: string) =>
 
 export function HeroCarousel() {
   const scroller = useRef<HTMLDivElement>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   const scroll = (dir: 1 | -1) => {
     scroller.current?.scrollBy({ left: dir * 400, behavior: "smooth" });
@@ -28,7 +30,8 @@ export function HeroCarousel() {
           {promos.map((p, i) => (
             <button
               key={p.id}
-              className={`snap-start shrink-0 relative overflow-hidden rounded-3xl ${bgFor(p.color)} ${textFor(p.color)} w-[280px] md:w-[320px] h-[220px] md:h-[260px] text-left group transition-transform hover:-translate-y-1 hover:shadow-elevated animate-slide-up`}
+              onClick={() => setOpenId(p.id)}
+              className={`snap-start shrink-0 relative overflow-hidden rounded-3xl ${bgFor(p.color)} ${textFor(p.color)} w-[280px] md:w-[320px] h-[220px] md:h-[260px] text-left group transition-transform hover:-translate-y-1 hover:shadow-elevated animate-slide-up cursor-pointer`}
               style={{ animationDelay: `${i * 60}ms`, animationFillMode: "backwards" }}
             >
               {p.badge && (
@@ -60,6 +63,14 @@ export function HeroCarousel() {
           <ChevronRight className="w-6 h-6" />
         </button>
       </div>
+
+      {openId && (
+        <StoriesModal
+          promos={promos}
+          startPromoId={openId}
+          onClose={() => setOpenId(null)}
+        />
+      )}
     </section>
   );
 }
