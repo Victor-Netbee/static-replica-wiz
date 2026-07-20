@@ -76,14 +76,22 @@ export function ProductModal({ product, onClose }: { product: Product | null; on
         </button>
 
         {/* Image side */}
-        <div className="md:w-1/2 relative bg-linear-to-b from-surface to-surface-2 flex items-center justify-center p-6 md:p-10 shrink-0 overflow-hidden">
-          {/* decorative dotted plate */}
-          <div className="absolute inset-6 md:inset-10 rounded-full border-2 border-dashed border-border/60 pointer-events-none" />
+        <div className="md:w-1/2 relative bg-linear-to-b from-surface to-surface-2 flex items-center justify-center p-6 md:p-10 shrink-0 overflow-hidden min-h-[320px] md:min-h-[520px]">
+          {product.configurable ? (
+            <>
+              {/* 3 concentric dashed size rings */}
+              <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[90%] max-w-[460px] rounded-full border-2 border-dashed pointer-events-none transition-colors duration-300 ${sizeId === "35" ? "border-primary/70" : "border-border/50"}`} />
+              <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[74%] max-w-[380px] rounded-full border-2 border-dashed pointer-events-none transition-colors duration-300 ${sizeId === "30" ? "border-primary/70" : "border-border/50"}`} />
+              <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 aspect-square w-[58%] max-w-[300px] rounded-full border-2 border-dashed pointer-events-none transition-colors duration-300 ${sizeId === "25" ? "border-primary/70" : "border-border/50"}`} />
+            </>
+          ) : (
+            <div className="absolute inset-6 md:inset-10 rounded-full border-2 border-dashed border-border/60 pointer-events-none" />
+          )}
           <img
             src={product.image}
             alt={product.name}
             className="relative w-56 h-56 md:w-[380px] md:h-[380px] object-contain animate-scale-in transition-transform duration-500"
-            style={{ transform: `scale(${sizeId === "25" ? 0.82 : sizeId === "30" ? 0.92 : 1})` }}
+            style={{ transform: `scale(${sizeId === "25" ? 0.7 : sizeId === "30" ? 0.86 : 1})` }}
           />
         </div>
 
